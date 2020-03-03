@@ -134,7 +134,6 @@ Post: Calling "ExpressionType" object contains "expression" in postfix format, w
 */
 void ExpressionType::InfixToPostfix(const ExpressionType& infix)
 {
-  cout << "InfixToPostfix() called \n";
   queue<TokenType> tokens = infix.GetExpression();
   stack<TokenType> tokenStack;
   
