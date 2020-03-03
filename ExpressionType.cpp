@@ -147,19 +147,16 @@ void ExpressionType::InfixToPostfix(const ExpressionType& infix)
       {
         expression.push(nextToken);
         tokens.pop();
-        cout << "case NUMBER \n";
       }
       break;
       case O_PARENTHESIS:
       {
-        cout << "case O_PARENTHESIS \n";
         tokenStack.push(nextToken);
         tokens.pop();
       }
       break;
       case OPERATOR:
       {
-        cout << "case OPERATOR \n";
         bool moreToLoop = true;
         char front = nextToken.GetCharacter();
         char top;
@@ -196,7 +193,6 @@ void ExpressionType::InfixToPostfix(const ExpressionType& infix)
       break;
       case C_PARENTHESIS:
       {
-        cout << "case C_PARENTHESIS \n";
         try 
         {
           CheckForOP(tokenStack);
@@ -240,7 +236,6 @@ void ExpressionType::InfixToPostfix(const ExpressionType& infix)
 */
 double ExpressionType::EvaluatePostfix() const
 {
-  cout << "EvaluatePostfix() const called \n";
   queue <TokenType> tokens = expression;
   stack <double> doubleStack;
   
@@ -249,14 +244,12 @@ double ExpressionType::EvaluatePostfix() const
     TokenType front = tokens.front();
     if(front.GetType() == NUMBER)
     {
-      cout << "NUMBER \n";
       double doubleNumber = static_cast<double> (front.GetNumber());
       doubleStack.push(doubleNumber);
       tokens.pop();
     }
     else
     {
-      cout << "OPERATOR \n";
       try
       {
         this->BinaryOperation(doubleStack, front);
@@ -399,13 +392,10 @@ void ExpressionType::BinaryOperation(stack <double>& doubleStack, TokenType toke
       {
         operand1 = doubleStack.top();
         doubleStack.pop();
-        cout << "operand1: "<< operand1;
-        cout << " operand2: " << operand2 << endl;
         switch(binaryOperator)
         {
           case '*':
           {
-            cout << "*\n";
             doubleStack.push(operand1 * operand2);
           }
           break;
@@ -414,19 +404,16 @@ void ExpressionType::BinaryOperation(stack <double>& doubleStack, TokenType toke
             if(operand2 == 0)
               throw DivisionByZero();
             else
-              cout << "/\n";
               doubleStack.push(operand1 / operand2);
           }
           break;
           case '+':
           {
-            cout << "+\n";
             doubleStack.push(operand1 + operand2);
           }
           break;
           case '-':
           {
-            cout << "-\n";
             doubleStack.push(operand1 - operand2);
           }
           break;
