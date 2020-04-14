@@ -1,4 +1,4 @@
-# CISC-2200-data-structures-Project
+# CISC 2200 Data Structures Project
 * This is a simple integer expression calculator written in c++.
 * It supports parentheses "(" and ")", "-", "+", "*", and "/" operators, and integer operands.
 * Use: 
